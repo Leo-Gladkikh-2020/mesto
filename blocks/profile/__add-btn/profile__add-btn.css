@@ -10,16 +10,17 @@
   box-sizing: border-box;
   border-radius: 2px;
   cursor: pointer;
+  transition: ease;
 }
 
 .profile__add-btn:hover {
   opacity: .6;
-  transition: ease;
 }
 
 @media screen and (max-width: 767px) {
   .profile__add-btn {
     width: 100%;
     margin-top: 36px;
+    background-size: 16px 16px;
   }
 }

@@ -13,8 +13,7 @@
 
   <!-- Шапка сайта - Блок header -->
   <header class="header">
-    <div class="header__logo"></div>
-    <div class="header__line"></div>
+    <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto">
   </header>
   <!-- / Шапка сайта - Блок header -->
 
@@ -27,11 +26,11 @@
       <div class="profile__description">
         <div class="profile__title">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-btn"></button>
+          <button class="profile__edit-btn" type="button"></button>
         </div>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
-      <button class="profile__add-btn"></button>
+      <button class="profile__add-btn" type="button"></button>
     </section>
     <!-- / Секция profile -->
 
@@ -39,45 +38,45 @@
     <section class="elements" aria-label="Секция с описанием мест">
       <ul class="elements__list">
         <li class="element">
-          <img class="element__image" src="./images/karachayevsk.png" alt="Фото - Карачаевск">
+          <img class="element__image" src="./images/karachayevsk.jpg" alt="Фото - Карачаевск">
           <div class="element__container">
             <h2 class="element__title">Карачаевск</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
         <li class="element">
-          <img class="element__image" src="./images/gora-elbrus.png" alt="Фото - Гора Эльбрус">
+          <img class="element__image" src="./images/gora-elbrus.jpg" alt="Фото - Гора Эльбрус">
           <div class="element__container">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
         <li class="element">
-          <img class="element__image" src="./images/dombay.png" alt="Фото - Домбай">
+          <img class="element__image" src="./images/dombay.jpg" alt="Фото - Домбай">
           <div class="element__container">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
         <li class="element">
-          <img class="element__image" src="./images/gora-elbrus.png" alt="Фото - Гора Эльбрус">
+          <img class="element__image" src="./images/gora-elbrus.jpg" alt="Фото - Гора Эльбрус">
           <div class="element__container">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
         <li class="element">
-          <img class="element__image" src="./images/dombay.png" alt="Фото - Домбай">
+          <img class="element__image" src="./images/dombay.jpg" alt="Фото - Домбай">
           <div class="element__container">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
         <li class="element">
-          <img class="element__image" src="./images/karachayevo-cherkesiya.png" alt="Фото - Карачаево-Черкесия">
+          <img class="element__image" src="./images/karachayevo-cherkesiya.jpg" alt="Фото - Карачаево-Черкесия">
           <div class="element__container">
             <h2 class="element__title">Карачаево-Черкесия</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
       </ul>
@@ -96,11 +95,11 @@
   <!-- Всплывающая форма -->
   <div class="popup">
     <div class="popup__content">
-      <button class="popup__close-btn"></button>
-      <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form">
-        <input class="popup__input popup__input_name" type="text" placeholder="Имя">
-        <input class="popup__input popup__input_about" type="text" placeholder="О себе">
+      <button class="popup__close-btn" type="button"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="form-popup">
+        <input class="popup__input popup__input_text_name" type="text" name="name" placeholder="Имя">
+        <input class="popup__input popup__input_text_about" type="text" name="about" placeholder="О себе">
         <button class="popup__save-btn" type="submit">Сохранить</button>
       </form>
     </div>

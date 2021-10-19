@@ -9,9 +9,17 @@
   border: 1px solid #fff;
   box-sizing: border-box;
   cursor: pointer;
+  transition: ease;
 }
 
 .profile__edit-btn:hover {
   opacity: .6;
-  transition: ease;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__edit-btn {
+    background-size: 7.5px 7.5px;
+    width: 18px;
+    height: 18px;
+  }
 }

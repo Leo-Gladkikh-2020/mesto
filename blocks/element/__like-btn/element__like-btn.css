@@ -7,9 +7,9 @@
   height: 19px;
   border: none;
   cursor: pointer;
+  transition: ease;
 }
 
 .element__like-btn:hover {
   opacity: .6;
-  transition: ease;
 }
