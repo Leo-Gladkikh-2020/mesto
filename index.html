@@ -36,50 +36,7 @@
 
     <!-- Секция elements -->
     <section class="elements" aria-label="Секция с описанием мест">
-      <ul class="elements__list">
-        <li class="element">
-          <img class="element__image" src="./images/karachayevsk.jpg" alt="Фото - Карачаевск">
-          <div class="element__container">
-            <h2 class="element__title">Карачаевск</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__image" src="./images/gora-elbrus.jpg" alt="Фото - Гора Эльбрус">
-          <div class="element__container">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__image" src="./images/dombay.jpg" alt="Фото - Домбай">
-          <div class="element__container">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__image" src="./images/gora-elbrus.jpg" alt="Фото - Гора Эльбрус">
-          <div class="element__container">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__image" src="./images/dombay.jpg" alt="Фото - Домбай">
-          <div class="element__container">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__image" src="./images/karachayevo-cherkesiya.jpg" alt="Фото - Карачаево-Черкесия">
-          <div class="element__container">
-            <h2 class="element__title">Карачаево-Черкесия</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </li>
-      </ul>
+      <ul class="elements__list"></ul>
     </section>
     <!-- / Секция elements -->
 
@@ -92,19 +49,58 @@
   </footer>
   <!-- / Подвал сайта - Блок footer -->
 
-  <!-- Всплывающая форма -->
-  <div class="popup">
+  <!-- Форма редактирования профиля -->
+  <div class="popup popup-edit">
     <div class="popup__content">
-      <button class="popup__close-btn" type="button"></button>
+      <button class="popup__close-btn popup__close-edit" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="form-popup">
+      <form class="popup__form popup__form-edit" name="edit-form">
         <input class="popup__input popup__input_text_name" type="text" name="name" placeholder="Имя">
         <input class="popup__input popup__input_text_about" type="text" name="about" placeholder="О себе">
         <button class="popup__save-btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
-  <!-- / Всплывающая форма -->
+  <!-- / Форма редактирования профиля -->
+
+  <!-- Форма добавления карточки места -->
+  <div class="popup popup-add">
+    <div class="popup__content">
+      <button class="popup__close-btn popup__close-add" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form popup__form-add" name="add-form">
+        <input class="popup__input popup__input_text_title" type="text" name="title" placeholder="Название">
+        <input class="popup__input popup__input_text_link" type="url" name="link" placeholder="Ссылка на картинку">
+        <button class="popup__save-btn" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+  <!-- / Форма добавления карточки места -->
+
+  <!-- Вспывающая картинка -->
+  <div class="popup popup-place">
+    <div class="popup__container">
+      <button class="popup__close-btn popup__close-place" type="button"></button>
+      <figure class="popup__figure">
+        <img src="#" alt="#" class="popup__image">
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
+    </div>
+  </div>
+  <!-- / Вспывающая картинка -->
+
+  <!-- Карточка места -->
+  <template class="template">
+    <li class="element">
+      <img class="element__image" src="#" alt="#">
+      <button class="element__trash-btn" type="button"></button>
+      <div class="element__container">
+        <h2 class="element__title"></h2>
+        <button class="element__like-btn" type="button"></button>
+      </div>
+    </li>
+  </template>
+  <!-- / Карточка места -->
 
   <script src="./scripts/index.js"></script>
 </body>
