@@ -50,6 +50,13 @@ function saveNameForm() {
     openPopup(popupEdit);
     inputName.value = profileTitle.textContent;
     inputAbout.value = profileSubtitle.textContent;
+    checkForm(formEdit, config);
+}
+
+function resetAddPopup() {
+    openPopup(popupAdd);
+    document.querySelector('.popup__form-add').reset();
+    checkForm(formAdd, config);
 }
 
 function submitFormEdit(event) {
@@ -105,7 +112,7 @@ function submitFormAdd(event) {
 }
 
 buttonEdit.addEventListener('click', saveNameForm);
-buttonAdd.addEventListener('click', () => openPopup(popupAdd));
+buttonAdd.addEventListener('click', resetAddPopup);
 
 formEdit.addEventListener('submit', submitFormEdit);
 formAdd.addEventListener('submit', submitFormAdd);

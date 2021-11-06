@@ -49,4 +49,14 @@ function hideError(input, form, config) {
     errorElement.textContent = '';
 }
 
+function resetErrorInput(form, config) {
+    const inputs = [...form.querySelectorAll(config.inputSelector)];
+    inputs.forEach((input) => hideError(input, form, config));
+}
+
+function checkForm(form, config) {
+    resetErrorInput(form, config);
+    setSubmitButtonState(form, config);
+}
+
 enableValidation(config);
