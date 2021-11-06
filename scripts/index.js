@@ -37,11 +37,13 @@ const listElements = document.querySelector('.elements__list');
 // Функция открытия popup
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupEscape);
 }
 
 // Функция закрытия popup
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupEscape);
 }
 
 function saveNameForm() {
@@ -98,6 +100,7 @@ function submitFormAdd(event) {
     }
     prependCard(item)
     event.target.reset();
+    setSubmitButtonState(formAdd, config);
     closePopup(popupAdd);
 }
 
@@ -122,6 +125,15 @@ function popupClickHandler(event) {
 popupEdit.addEventListener('mouseup', popupClickHandler);
 popupAdd.addEventListener('mouseup', popupClickHandler);
 popupPlace.addEventListener('mouseup', popupClickHandler);
+
+// закрытие popup вне зоны popup
+
+function closePopupEscape(event) {
+    if (event.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
 
 window.addEventListener('load', () => {
     document.querySelectorAll('.popup').forEach((popup) => popup.classList.add('popup_transition'))
