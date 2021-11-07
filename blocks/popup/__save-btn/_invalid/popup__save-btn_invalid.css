@@ -3,6 +3,7 @@
   background-color: #E5E5E5;
   color:#000;
   opacity: .2;
+  cursor: auto;
 }
 
 .popup__save-btn_invalid:hover {
