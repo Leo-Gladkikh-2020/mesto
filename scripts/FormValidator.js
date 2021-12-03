@@ -1,62 +1,56 @@
-const config = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    inputErrorClass: 'popup__input_text_error',
-    submitButtonSelector: '.popup__save-btn',
-    submitButtonErrorClass: 'popup__save-btn_invalid',
-}
+export class FormValidator {
+    constructor(config, form) {
+        this._form = form;
+        this._inputSelector = config.inputSelector;
+        this._inputErrorClass = config.inputErrorClass;
+        this._submitButtonSelector = config.submitButtonSelector;
+        this._submitButtonErrorClass = config.submitButtonErrorClass;
+        this._inputs = Array.from(this._form.querySelectorAll(this._inputSelector));
+    }
 
-function enableValidation(validationConfig) {
-    const forms = [...document.querySelectorAll(validationConfig.formSelector)];
-    forms.forEach((form) => setFormListeners(form, validationConfig));
-}
+    enableValidation() {
+        this._form.addEventListener('submit', (event) => this._handleSubmit(event));
+        this._form.addEventListener('input', () => this._setSubmitButtonState());
+        this._inputs.forEach(inputElement => {
+            inputElement.addEventListener('input', () => this._handleFieldValidation(inputElement))
+        });
+        this._setSubmitButtonState();
+    }
 
-function setFormListeners(form, config) {
-    form.addEventListener('submit', handleSubmit);
-    form.addEventListener('input', () => setSubmitButtonState(form, config));
-    const inputs = [...form.querySelectorAll(config.inputSelector)];
-    inputs.forEach(inputElement => { inputElement.addEventListener('input', () => handleFieldValidation(inputElement, form, config)) });
-    setSubmitButtonState(form, config);
-}
+    _setSubmitButtonState() {
+        const button = this._form.querySelector(this._submitButtonSelector);
+        button.disabled = !this._form.checkValidity();
+        button.classList.toggle(this._submitButtonErrorClass, !this._form.checkValidity());
+    }
 
-function setSubmitButtonState(form, config) {
-    const button = form.querySelector(config.submitButtonSelector);
-    button.disabled = !form.checkValidity();
-    button.classList.toggle(config.submitButtonErrorClass, !form.checkValidity());
-}
+    _handleSubmit(event) {
+        event.preventDefault()
+    }
 
-function handleSubmit(event) {
-    event.preventDefault();
-}
+    _handleFieldValidation(input) {
+        if (!input.validity.valid) {
+            this._showError(input)
+        } else {
+            this._hideError(input)
+        }
+    }
 
-function handleFieldValidation(input, form, config) {
-    if (!input.validity.valid) {
-        showError(input, form, config);
-    } else {
-        hideError(input, form, config);
+    _showError(input) {
+        const errorElement = this._form.querySelector(`#${input.id}-error`);
+        input.classList.add(this._inputErrorClass);
+        errorElement.textContent = input.validationMessage;
+    }
+
+    _hideError(input) {
+        const errorElement = this._form.querySelector(`#${input.id}-error`);
+        input.classList.remove(this._inputErrorClass);
+        errorElement.textContent = '';
+    }
+
+    resetErrorInput() {
+        this._setSubmitButtonState();
+        this._inputs.forEach((input) => {
+            this._hideError(input);
+        });
     }
 }
-
-function showError(input, form, config) {
-    const errorElement = form.querySelector(`#${input.id}-error`);
-    input.classList.add(config.inputErrorClass);
-    errorElement.textContent = input.validationMessage;
-}
-
-function hideError(input, form, config) {
-    const errorElement = form.querySelector(`#${input.id}-error`);
-    input.classList.remove(config.inputErrorClass);
-    errorElement.textContent = '';
-}
-
-function resetErrorInput(form, config) {
-    const inputs = [...form.querySelectorAll(config.inputSelector)];
-    inputs.forEach((input) => hideError(input, form, config));
-}
-
-function checkForm(form, config) {
-    resetErrorInput(form, config);
-    setSubmitButtonState(form, config);
-}
-
-enableValidation(config);

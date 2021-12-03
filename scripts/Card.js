@@ -1,62 +1,46 @@
-const config = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    inputErrorClass: 'popup__input_text_error',
-    submitButtonSelector: '.popup__save-btn',
-    submitButtonErrorClass: 'popup__save-btn_invalid',
-}
+const popupPlace = document.querySelector('.popup-place');
 
-function enableValidation(validationConfig) {
-    const forms = [...document.querySelectorAll(validationConfig.formSelector)];
-    forms.forEach((form) => setFormListeners(form, validationConfig));
-}
+export class Card {
+    constructor(data, cardSelector, openPopup) {
+        this._name = data.name;
+        this._link = data.link;
+        this._cardSelector = cardSelector;
+        this._openPopup = openPopup;
+    }
 
-function setFormListeners(form, config) {
-    form.addEventListener('submit', handleSubmit);
-    form.addEventListener('input', () => setSubmitButtonState(form, config));
-    const inputs = [...form.querySelectorAll(config.inputSelector)];
-    inputs.forEach(inputElement => { inputElement.addEventListener('input', () => handleFieldValidation(inputElement, form, config)) });
-    setSubmitButtonState(form, config);
-}
+    _getTemplate() {
+        const cardElement = document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
+        return cardElement;
+    }
 
-function setSubmitButtonState(form, config) {
-    const button = form.querySelector(config.submitButtonSelector);
-    button.disabled = !form.checkValidity();
-    button.classList.toggle(config.submitButtonErrorClass, !form.checkValidity());
-}
+    _btnLike(event) {
+        event.target.classList.toggle('element__like-btn_active');
+    }
 
-function handleSubmit(event) {
-    event.preventDefault();
-}
+    _btnTrash(event) {
+        event.target.closest('.element').remove();
+    }
 
-function handleFieldValidation(input, form, config) {
-    if (!input.validity.valid) {
-        showError(input, form, config);
-    } else {
-        hideError(input, form, config);
+    _openPopupPlace() {
+        popupPlace.querySelector('.popup__image').src = this._link;
+        popupPlace.querySelector('.popup__image').alt = this._name;
+        popupPlace.querySelector('.popup__caption').textContent = this._name;
+        this._openPopup(popupPlace);
+    }
+
+    _setEventListeners() {
+        this._element.querySelector('.element__like-btn').addEventListener('click', (event) => this._btnLike(event));
+        this._element.querySelector('.element__trash-btn').addEventListener('click', (event) => this._btnTrash(event));
+        this._element.querySelector('.element__image').addEventListener('click', () => this._openPopupPlace());
+    }
+
+    generateCard() {
+        this._element = this._getTemplate();
+        this._element.querySelector('.element__image').src = this._link;
+        this._element.querySelector('.element__image').alt = this._name;
+        this._element.querySelector('.element__title').textContent = this._name;
+        this._setEventListeners();
+
+        return this._element;
     }
 }
-
-function showError(input, form, config) {
-    const errorElement = form.querySelector(`#${input.id}-error`);
-    input.classList.add(config.inputErrorClass);
-    errorElement.textContent = input.validationMessage;
-}
-
-function hideError(input, form, config) {
-    const errorElement = form.querySelector(`#${input.id}-error`);
-    input.classList.remove(config.inputErrorClass);
-    errorElement.textContent = '';
-}
-
-function resetErrorInput(form, config) {
-    const inputs = [...form.querySelectorAll(config.inputSelector)];
-    inputs.forEach((input) => hideError(input, form, config));
-}
-
-function checkForm(form, config) {
-    resetErrorInput(form, config);
-    setSubmitButtonState(form, config);
-}
-
-enableValidation(config);

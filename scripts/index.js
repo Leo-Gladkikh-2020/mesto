@@ -1,5 +1,5 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 
 const initialCards = [
     { name: 'Архыз', link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg' },
@@ -31,10 +31,6 @@ const inputAbout = document.querySelector('.popup__input_text_about');
 const inputTitle = document.querySelector('.popup__input_text_title');
 const inputLink = document.querySelector('.popup__input_text_link');
 
-const popupImage = document.querySelector('.popup__image');
-const popupCaption = document.querySelector('.popup__caption');
-
-const template = document.querySelector('.template').content;
 const listElements = document.querySelector('.elements__list');
 
 // Функция открытия popup
@@ -53,13 +49,13 @@ function saveNameForm() {
     openPopup(popupEdit);
     inputName.value = profileTitle.textContent;
     inputAbout.value = profileSubtitle.textContent;
-    checkForm(formEdit, config);
+    formEditValidator.resetErrorInput();
 }
 
 function resetAddPopup() {
     openPopup(popupAdd);
-    document.querySelector('.popup__form-add').reset();
-    checkForm(formAdd, config);
+    formAdd.reset();
+    formAddValidator.resetErrorInput();
 }
 
 function submitFormEdit(event) {
@@ -69,30 +65,15 @@ function submitFormEdit(event) {
     closePopup(popupEdit);
 }
 
-initialCards.forEach(prependCard);
+// класс Cards
+
+initialCards.forEach(item => {
+    prependCard(item);
+});
 
 function createCard(item) {
-    const element = template.querySelector('.element').cloneNode(true);
-    element.querySelector('.element__image').src = item.link;
-    element.querySelector('.element__image').alt = item.name;
-    element.querySelector('.element__title').innerText = item.name;
-
-    element.querySelector('.element__like-btn').addEventListener('click', (event) => {
-        event.target.classList.toggle('element__like-btn_active');
-    });
-
-    element.querySelector('.element__trash-btn').addEventListener('click', (event) => {
-        event.target.closest('.element').remove();
-    });
-
-    element.querySelector('.element__image').addEventListener('click', () => {
-        openPopup(popupPlace);
-        popupImage.src = item.link;
-        popupImage.alt = item.name;
-        popupCaption.textContent = item.name;
-    });
-
-    return element;
+    const card = new Card(item, '.template', openPopup);
+    return card.generateCard();
 }
 
 function prependCard(item) {
@@ -110,7 +91,6 @@ function submitFormAdd(event) {
     }
     prependCard(item)
     event.target.reset();
-    setSubmitButtonState(formAdd, config);
     closePopup(popupAdd);
 }
 
@@ -148,3 +128,18 @@ function closePopupEscape(event) {
 window.addEventListener('load', () => {
     document.querySelectorAll('.popup').forEach((popup) => popup.classList.add('popup_transition'))
 });
+
+// класс FormValidator
+
+const config = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    inputErrorClass: 'popup__input_text_error',
+    submitButtonSelector: '.popup__save-btn',
+    submitButtonErrorClass: 'popup__save-btn_invalid',
+};
+
+const formAddValidator = new FormValidator(config, formAdd);
+formAddValidator.enableValidation();
+const formEditValidator = new FormValidator(config, formEdit);
+formEditValidator.enableValidation();
