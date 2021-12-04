@@ -13,11 +13,11 @@ export class Card {
         return cardElement;
     }
 
-    _btnLike(event) {
+    _likeCard(event) {
         event.target.classList.toggle('element__like-btn_active');
     }
 
-    _btnTrash(event) {
+    _deleteCard(event) {
         event.target.closest('.element').remove();
     }
 
@@ -29,8 +29,8 @@ export class Card {
     }
 
     _setEventListeners() {
-        this._element.querySelector('.element__like-btn').addEventListener('click', (event) => this._btnLike(event));
-        this._element.querySelector('.element__trash-btn').addEventListener('click', (event) => this._btnTrash(event));
+        this._element.querySelector('.element__like-btn').addEventListener('click', (event) => this._likeCard(event));
+        this._element.querySelector('.element__trash-btn').addEventListener('click', (event) => this._deleteCard(event));
         this._element.querySelector('.element__image').addEventListener('click', () => this._openPopupPlace());
     }
 

@@ -47,7 +47,7 @@ export class FormValidator {
         errorElement.textContent = '';
     }
 
-    resetErrorInput() {
+    rresetValidation() {
         this._setSubmitButtonState();
         this._inputs.forEach((input) => {
             this._hideError(input);
