@@ -21,23 +21,24 @@
 - Удаление карточки.
 - Открытие popup с картинкой.
 
-### Технологии
+### Технологии:
 
-**В проекте были применены следующие технологии:**
-1. HTML5 + CSS3
-2. Адаптивная верстка
-3. Flexbox
-4. Grid
-5. БЭМ Nested
-6. JavaScript (ES6)
-7. ООП
-8. Webpack
+1. Графический редактор Figma
+2. Pixel Perfect вёрстка
+3. HTML5 + CSS3
+4. Адаптивная верстка под разрешения: 1280px, 1024px, 768px и 320px
+5. Для создания сеток используется Flexbox и Grid-layout
+6. Файловая структура построена по БЭМ (схема - Nested)
+7. JavaScript (ES6)
+8. ООП
+9. npm
+10. Webpack
+11. Babel
 
-### Макет в Figma
-Внеший фид сайта соответствует макетам:
-* [Первый макет](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
-* [Второй макет](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
-* [Третий макет](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
+### Внеший фид сайта соответствует макетам:
+* [Макет в Figma 1](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [Макет в Figma 2](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
+* [Макет в Figma 3](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
 
 ### GitHub Pages
 * [Ссылка на проект на GitHub Pages](https://leo-gladkikh-2020.github.io/mesto/)
