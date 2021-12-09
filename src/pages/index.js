@@ -1,6 +1,6 @@
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
-import { initialCards } from './utils.js';
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { initialCards } from '../utils/utils.js';
 
 const popupEdit = document.querySelector('.popup-edit');
 const popupAdd = document.querySelector('.popup-add');
