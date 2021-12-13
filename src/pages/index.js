@@ -1,29 +1,27 @@
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
-import { initialCards } from '../utils/utils.js';
 
-const popupEdit = document.querySelector('.popup-edit');
-const popupAdd = document.querySelector('.popup-add');
-const popupPlace = document.querySelector('.popup-place');
-
-const buttonEdit = document.querySelector('.profile__edit-btn');
-const buttonAdd = document.querySelector('.profile__add-btn');
-const buttonCloseEdit = document.querySelector('.popup__close-edit');
-const buttonCloseAdd = document.querySelector('.popup__close-add');
-const buttonClosePlace = document.querySelector('.popup__close-place');
-
-const formEdit = document.querySelector('.popup__form-edit');
-const formAdd = document.querySelector('.popup__form-add');
-
-const profileTitle = document.querySelector('.profile__name');
-const profileSubtitle = document.querySelector('.profile__subtitle');
-
-const inputName = document.querySelector('.popup__input_text_name');
-const inputAbout = document.querySelector('.popup__input_text_about');
-const inputTitle = document.querySelector('.popup__input_text_title');
-const inputLink = document.querySelector('.popup__input_text_link');
-
-const listElements = document.querySelector('.elements__list');
+import {
+    initialCards,
+    popupEdit,
+    popupAdd,
+    popupPlace,
+    buttonEdit,
+    buttonAdd,
+    buttonCloseEdit,
+    buttonCloseAdd,
+    buttonClosePlace,
+    formEdit,
+    formAdd,
+    profileTitle,
+    profileSubtitle,
+    inputName,
+    inputAbout,
+    inputTitle,
+    inputLink,
+    listElements,
+    config
+} from '../utils/constants.js';
 
 // Функция открытия popup
 function openPopup(popup) {
@@ -122,14 +120,6 @@ window.addEventListener('load', () => {
 });
 
 // класс FormValidator
-
-const config = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    inputErrorClass: 'popup__input_text_error',
-    submitButtonSelector: '.popup__save-btn',
-    submitButtonErrorClass: 'popup__save-btn_invalid',
-};
 
 const formAddValidator = new FormValidator(config, formAdd);
 formAddValidator.enableValidation();

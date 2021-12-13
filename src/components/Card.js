@@ -1,4 +1,4 @@
-const popupPlace = document.querySelector('.popup-place');
+import { popupPlace } from '../utils/constants.js';
 
 export class Card {
     constructor(data, cardSelector, openPopup) {
