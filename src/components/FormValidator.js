@@ -24,14 +24,14 @@ export class FormValidator {
     }
 
     _handleSubmit(event) {
-        event.preventDefault()
+        event.preventDefault();
     }
 
     _handleFieldValidation(input) {
         if (!input.validity.valid) {
-            this._showError(input)
+            this._showError(input);
         } else {
-            this._hideError(input)
+            this._hideError(input);
         }
     }
 
