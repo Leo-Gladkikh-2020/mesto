@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
+  <!--<link rel="stylesheet" href="./pages/index.css">-->
   <title>Mesto</title>
 </head>
 
@@ -13,7 +13,7 @@
 
   <!-- Шапка сайта - Блок header -->
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto">
+    <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Mesto">
   </header>
   <!-- / Шапка сайта - Блок header -->
 
@@ -22,7 +22,7 @@
 
     <!-- Секция profile -->
     <section class="profile">
-      <img class="profile__avatar" src="./images/avatar.png" alt="Фото - Аватар">
+      <img class="profile__avatar" src="<%=require('./images/avatar.png')%>" alt="Фото - Аватар">
       <div class="profile__description">
         <div class="profile__title">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -110,7 +110,7 @@
   </template>
   <!-- / Карточка места -->
 
-  <script type="module" src="./pages/index.js"></script>
+  <!--<script type="module" src="./pages/index.js"></script>-->
 </body>
 
 </html>
