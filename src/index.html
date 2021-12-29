@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--<link rel="stylesheet" href="./pages/index.css">-->
   <title>Mesto</title>
 </head>
 
@@ -22,7 +21,9 @@
 
     <!-- Секция profile -->
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/avatar.png')%>" alt="Фото - Аватар">
+      <button class="profile__avatar-btn" type="button">
+        <img class="profile__avatar" src="#" alt="Фото - Аватар">
+      </button>
       <div class="profile__description">
         <div class="profile__title">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -52,7 +53,7 @@
   <!-- Форма редактирования профиля -->
   <div class="popup popup-edit">
     <div class="popup__content">
-      <button class="popup__close-btn popup__close-edit" type="button"></button>
+      <button class="popup__close-btn" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form popup__form-edit" name="edit-form" novalidate>
         <input class="popup__input popup__input_text_name" type="text" name="name" id="name" placeholder="Имя"
@@ -67,10 +68,25 @@
   </div>
   <!-- / Форма редактирования профиля -->
 
+  <!-- Форма редактирования аватара -->
+  <div class="popup popup-avatar">
+    <div class="popup__content">
+      <button class="popup__close-btn" type="button"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form popup__form-avatar" name="avatar-form" novalidate>
+        <input class="popup__input popup__input_text_link" type="url" name="avatar" id="avatar"
+          placeholder="Ссылка на картинку" required>
+        <span class="popup__error" id="avatar-error"></span>
+        <button class="popup__save-btn" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <!-- / Форма редактирования аватара -->
+
   <!-- Форма добавления карточки места -->
   <div class="popup popup-add">
     <div class="popup__content">
-      <button class="popup__close-btn popup__close-add" type="button"></button>
+      <button class="popup__close-btn" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form popup__form-add" name="add-form" novalidate>
         <input class="popup__input popup__input_text_title" type="text" name="title" id="title" placeholder="Название"
@@ -85,10 +101,22 @@
   </div>
   <!-- / Форма добавления карточки места -->
 
+  <!-- Форма удаления карточки места -->
+  <div class="popup popup-delete">
+    <div class="popup__content">
+      <button class="popup__close-btn" type="button"></button>
+      <h2 class="popup__title">Вы уверены?</h2>
+      <form class="popup__form popup__form-delete" name="delete-form" novalidate>
+        <button class="popup__save-btn" type="submit">Да</button>
+      </form>
+    </div>
+  </div>
+  <!-- / Форма удаления карточки места -->
+
   <!-- Вспывающая картинка -->
   <div class="popup popup-place">
     <div class="popup__container">
-      <button class="popup__close-btn popup__close-place" type="button"></button>
+      <button class="popup__close-btn" type="button"></button>
       <figure class="popup__figure">
         <img src="#" alt="#" class="popup__image">
         <figcaption class="popup__caption"></figcaption>
@@ -104,13 +132,15 @@
       <button class="element__trash-btn" type="button"></button>
       <div class="element__container">
         <h2 class="element__title"></h2>
-        <button class="element__like-btn" type="button"></button>
+        <div class="element__like">
+          <button class="element__like-btn" type="button"></button>
+          <span class="element__like-number">0</span>
+        </div>
       </div>
     </li>
   </template>
   <!-- / Карточка места -->
 
-  <!--<script type="module" src="./pages/index.js"></script>-->
 </body>
 
 </html>
