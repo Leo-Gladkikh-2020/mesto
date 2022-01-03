@@ -5,7 +5,7 @@ import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
-import { Api } from '../components/Api.js';
+//import { Api } from '../components/Api.js';
 
 import {
     initialCards,
@@ -24,13 +24,13 @@ import {
     config
 } from '../utils/constants.js';
 
-const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-32',
-    headers: {
-        authorization: '834693d9-1821-4fba-aca9-8dc02ca9ce04',
-        'Content-Type': 'application/json'
-    }
-});
+//const api = new Api({
+//baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-32',
+//headers: {
+//authorization: '834693d9-1821-4fba-aca9-8dc02ca9ce04',
+//'Content-Type': 'application/json'
+//}
+//});
 
 buttonEdit.addEventListener('click', () => {
     popupWithFormEdit.open();
