@@ -1,19 +1,25 @@
 export class Api {
-    constructor({ baseUrl, headers }) {
+    constructor({ baseUrl, token }) {
         this._baseUrl = baseUrl;
-        this._headers = headers;
+        this._token = token;
     }
 
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
-            headers: this._headers
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            }
         })
             .then(this._checkStatus)
     }
 
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
-            headers: this._headers
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            }
         })
             .then(this._checkStatus)
     }
@@ -21,7 +27,10 @@ export class Api {
     changeUserInfo(data) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ name: data.name, about: data.about })
         })
             .then(this._checkStatus)
@@ -30,7 +39,10 @@ export class Api {
     changeUserAvatar(data) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ avatar: data.avatar })
         })
             .then(this._checkStatus)
@@ -39,7 +51,10 @@ export class Api {
     addCard(data) {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
-            headers: this._headers,
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ name: data.name, link: data.link })
         })
             .then(this._checkStatus)
@@ -48,7 +63,10 @@ export class Api {
     deleteCard(data) {
         return fetch(`${this._baseUrl}/cards/${data._id}`, {
             method: 'DELETE',
-            headers: this._headers
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            }
         })
             .then(this._checkStatus)
     }
@@ -56,7 +74,10 @@ export class Api {
     addLike(data) {
         return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
             method: 'PUT',
-            headers: this._headers
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            }
         })
             .then(this._checkStatus)
     }
@@ -64,7 +85,10 @@ export class Api {
     deleteLike(data) {
         return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
             method: 'DELETE',
-            headers: this._headers
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            }
         })
             .then(this._checkStatus)
     }
