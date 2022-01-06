@@ -11,59 +11,55 @@ export default class Api {
             .then(this._checkStatus)
     }
 
-    changeUserInfo({ name, about }) {
+    changeUserInfo(data) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
-            body: JSON.stringify({ name, about })
+            body: JSON.stringify({ name: data.name, about: data.about })
         })
+            .then(this._checkStatus)
     }
 
-    changeUserAvatar(avatar) {
+    changeUserAvatar(data) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
-            body: JSON.stringify({ avatar })
+            body: JSON.stringify({ avatar: data.avatar })
         })
+            .then(this._checkStatus)
     }
 
-    getInitialCards() {
-        return fetch(`${this._baseUrl}/cards`, {
-            headers: this._headers
-        })
-            .then(this_checkStatus)
-    }
-
-    addCard({ name, link }) {
+    addCard(data) {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: this._headers,
-            body: JSON.stringify({ name, link })
+            body: JSON.stringify({ name: data.name, link: data.link })
         })
-            .then(this_checkStatus)
+            .then(this._checkStatus)
     }
 
-    deleteCard(id) {
-        return fetch(`${this._baseUrl}/cards/${id}`, {
+    deleteCard(data) {
+        return fetch(`${this._baseUrl}/cards/${data._id}`, {
             method: 'DELETE',
             headers: this._headers
         })
-            .then(this_checkStatus)
+            .then(this._checkStatus)
     }
 
-    addLike(id) {
-        return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+    addLike(data) {
+        return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
             method: 'PUT',
             headers: this._headers
         })
-            .then(this_checkStatus)
+            .then(this._checkStatus)
     }
 
-    deleteLike(id) {
-        return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+    deleteLike(data) {
+        return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
             method: 'DELETE',
             headers: this._headers
         })
+            .then(this._checkStatus)
     }
 
     _checkStatus(res) {

@@ -11,6 +11,7 @@
 
 /* Секция profile  */
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar-btn/profile__avatar-btn.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__description/profile__description.css);
 @import url(../blocks/profile/__title/profile__title.css);
