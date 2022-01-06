@@ -195,7 +195,7 @@ const api = new Api({
     }
 });
 
-Promise.all([api.getProfileInfo(), api.getInitialCards()])
+Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userData, cards]) => {
         userInfo.changeUserInfo(userData);
         userInfo.changeUserAvatar(userData);
