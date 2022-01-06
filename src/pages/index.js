@@ -25,7 +25,6 @@ import {
     inputName,
     inputAbout,
     listElements,
-    template,
     config
 } from '../utils/constants.js';
 
@@ -35,6 +34,19 @@ const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-32',
     token: '834693d9-1821-4fba-aca9-8dc02ca9ce04'
 });
+
+// класс PopupWithImage
+
+const popupWithImage = new PopupWithImage(popupPlace);
+popupWithImage.setEventListeners();
+
+function handleCardClick(name, link) {
+    popupWithImage.open(name, link);
+}
+
+// класс PopupWithConfirmation
+
+const popupWithConfirmation = new PopupWithConfirmation(popupPlaceDelete);
 
 // класс Cards
 
@@ -73,11 +85,11 @@ function createCard(item) {
                     console.log(err);
                 })
         }
-    }, template)
+    })
     return card.generateCard();
 }
 
-// // класс Section
+// класс Section
 
 const section = new Section({
     renderer: (item) => {
@@ -87,14 +99,28 @@ const section = new Section({
 },
     listElements);
 
-// класс PopupWithImage
+// класс UserInfo
 
-const popupWithImage = new PopupWithImage(popupPlace);
-popupWithImage.setEventListeners();
+const userInfo = new UserInfo({ nameUser: profileTitle, aboutUser: profileSubtitle });
 
-function handleCardClick(name, link) {
-    popupWithImage.open(name, link);
-}
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then(([userData, cards]) => {
+        userInfo.setUserInfo(userData);
+        userInfo.setAvatar(userData);
+        section.renderItems(cards);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+
+// класс FormValidator
+
+const formAddValidator = new FormValidator(config, formAdd);
+formAddValidator.enableValidation();
+const formAvatarValidator = new FormValidator(config, formAvatar);
+formAvatarValidator.enableValidation();
+const formEditValidator = new FormValidator(config, formEdit);
+formEditValidator.enableValidation();
 
 // класс PopupWithForm
 
@@ -115,7 +141,6 @@ const popupWithFormEdit = new PopupWithForm(popupEdit, {
             })
     }
 });
-popupWithFormEdit.setEventListeners();
 
 const popupWithFormAvatar = new PopupWithForm(popupAvatar, {
     submitForm: (data) => {
@@ -134,7 +159,6 @@ const popupWithFormAvatar = new PopupWithForm(popupAvatar, {
             })
     }
 });
-popupWithFormAvatar.setEventListeners();
 
 const popupWithFormAdd = new PopupWithForm(popupAdd, {
     submitForm: (data) => {
@@ -154,26 +178,6 @@ const popupWithFormAdd = new PopupWithForm(popupAdd, {
             })
     }
 });
-popupWithFormAdd.setEventListeners();
-
-// класс PopupWithConfirmation
-
-const popupWithConfirmation = new PopupWithConfirmation(popupPlaceDelete);
-popupWithConfirmation.setEventListeners();
-
-// класс UserInfo
-
-const userInfo = new UserInfo({ nameUser: profileTitle, aboutUser: profileSubtitle });
-
-Promise.all([api.getUserInfo(), api.getInitialCards()])
-    .then(([userData, cards]) => {
-        userInfo.setUserInfo(userData);
-        userInfo.setAvatar(userData);
-        section.renderItems(cards);
-    })
-    .catch((err) => {
-        console.log(err);
-    })
 
 buttonEdit.addEventListener('click', () => {
     const profileDescription = userInfo.getUserInfo();
@@ -182,22 +186,18 @@ buttonEdit.addEventListener('click', () => {
     formEditValidator.resetValidation();
     popupWithFormEdit.open();
 });
+popupWithFormEdit.setEventListeners();
 
 buttonAvatar.addEventListener('click', () => {
     formAvatarValidator.resetValidation();
     popupWithFormAvatar.open();
 });
+popupWithFormAvatar.setEventListeners();
 
 buttonAdd.addEventListener('click', () => {
     formAddValidator.resetValidation();
     popupWithFormAdd.open();
 });
+popupWithFormAdd.setEventListeners();
 
-// класс FormValidator
-
-const formAddValidator = new FormValidator(config, formAdd);
-formAddValidator.enableValidation();
-const formAvatarValidator = new FormValidator(config, formAvatar);
-formAvatarValidator.enableValidation();
-const formEditValidator = new FormValidator(config, formEdit);
-formEditValidator.enableValidation();
+popupWithConfirmation.setEventListeners();

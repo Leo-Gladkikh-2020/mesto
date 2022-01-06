@@ -19,7 +19,6 @@ export const inputName = document.querySelector('.popup__input_text_name');
 export const inputAbout = document.querySelector('.popup__input_text_about');
 
 export const listElements = document.querySelector('.elements__list');
-export const template = document.querySelector('.template');
 
 export const config = {
     formSelector: '.popup__form',
