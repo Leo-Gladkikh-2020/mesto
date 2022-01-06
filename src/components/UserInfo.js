@@ -1,4 +1,4 @@
-export default class UserInfo {
+export class UserInfo {
     constructor({ nameUser, aboutUser }) {
         this._nameUser = nameUser;
         this._aboutUser = aboutUser;
