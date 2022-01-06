@@ -43,7 +43,7 @@ function createCard(item) {
         handleDeleteIconClick: (card) => {
             PopupWithConfirmation.open();
             PopupWithConfirmation.setSubmitAction(() => {
-                api.deleteCard(data)
+                api.deleteCard(data._id)
                     .then((res) => {
                         card.deleteCard(res);
                         PopupWithConfirmation.close();
@@ -54,7 +54,7 @@ function createCard(item) {
             })
         },
         addLike: () => {
-            api.addLike(data)
+            api.addLike(data._id)
                 .then((data) => {
                     card.countLikes(data);
                     console.log(data);
@@ -64,7 +64,7 @@ function createCard(item) {
                 })
         },
         deleteLike: () => {
-            api.deleteLike(data)
+            api.deleteLike(data._id)
                 .then((data) => {
                     card.countLikes(data);
                     console.log(data);
