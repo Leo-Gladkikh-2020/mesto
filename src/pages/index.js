@@ -103,7 +103,7 @@ const popupWithFormEdit = new PopupWithForm(popupEdit, {
         popupWithFormEdit.renderLoading(true);
         api.changeUserInfo(data)
             .then((res) => {
-                userInfo.changeUserInfo(res);
+                userInfo.setUserInfo(res);
                 console.log(res);
                 popupWithFormEdit.close();
             })
@@ -122,7 +122,7 @@ const popupWithFormAvatar = new PopupWithForm(popupAvatar, {
         popupWithFormAvatar.renderLoading(true);
         api.changeUserAvatar(data)
             .then((res) => {
-                userInfo.changeUserAvatar(res);
+                userInfo.setAvatar(res);
                 console.log(res);
                 popupWithFormAvatar.close();
             })
@@ -167,8 +167,8 @@ const userInfo = new UserInfo({ nameUser: profileTitle, aboutUser: profileSubtit
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userData, cards]) => {
-        userInfo.changeUserInfo(userData);
-        userInfo.changeUserAvatar(userData);
+        userInfo.setUserInfo(userData);
+        userInfo.setAvatar(userData);
         section.renderItems(cards);
     })
     .catch((err) => {
