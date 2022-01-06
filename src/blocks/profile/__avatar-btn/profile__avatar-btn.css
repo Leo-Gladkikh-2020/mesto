@@ -10,7 +10,7 @@
   
   .profile__avatar-btn::after {
     content: "";
-    background-image: url(../../../image/avatar-btn.svg);
+    background-image: url(../../../images/avatar-btn.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgba(0, 0, 0, 0.8);
