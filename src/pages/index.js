@@ -70,15 +70,6 @@ function createCard(item) {
     return card.generateCard();
 }
 
-// класс FormValidator
-
-const formAddValidator = new FormValidator(config, formAdd);
-formAddValidator.enableValidation();
-const formAvatarValidator = new FormValidator(config, formAvatar);
-formAvatarValidator.enableValidation();
-const formEditValidator = new FormValidator(config, formEdit);
-formEditValidator.enableValidation();
-
 // // класс Section
 
 const section = new Section({
@@ -204,3 +195,12 @@ buttonAdd.addEventListener('click', () => {
     formAddValidator.resetValidation();
     popupWithFormAdd.open();
 });
+
+// класс FormValidator
+
+const formAddValidator = new FormValidator(config, formAdd);
+formAddValidator.enableValidation();
+const formAvatarValidator = new FormValidator(config, formAvatar);
+formAvatarValidator.enableValidation();
+const formEditValidator = new FormValidator(config, formEdit);
+formEditValidator.enableValidation();
