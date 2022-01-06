@@ -88,14 +88,6 @@ function createCard(item) {
     return card.generateCard();
 }
 
-function createCard(data) {
-    const card = new Card(data, '.template', handleCardClick, {
-
-    }, userId)
-    const cardElement = card.generateCard();
-    return cardElement;
-}
-
 // класс FormValidator
 
 const formAddValidator = new FormValidator(config, formAdd);
