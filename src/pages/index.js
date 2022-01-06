@@ -29,6 +29,16 @@ import {
     config
 } from '../utils/constants.js';
 
+// класс Api
+
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-32',
+    headers: {
+        authorization: '834693d9-1821-4fba-aca9-8dc02ca9ce04',
+        'Content-Type': 'application/json'
+    }
+});
+
 // класс Cards
 
 function createCard(item) {
@@ -157,16 +167,6 @@ popupWithConfirmation.setEventListeners();
 // класс UserInfo
 
 const userInfo = new UserInfo({ nameUser: profileTitle, aboutUser: profileSubtitle });
-
-// класс Api
-
-const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-32',
-    headers: {
-        authorization: '834693d9-1821-4fba-aca9-8dc02ca9ce04',
-        'Content-Type': 'application/json'
-    }
-});
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userData, cards]) => {
