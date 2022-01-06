@@ -29,24 +29,6 @@ import {
     config
 } from '../utils/constants.js';
 
-buttonEdit.addEventListener('click', () => {
-    popupWithFormEdit.open();
-    const profileDescription = userInfo.getUserInfo();
-    inputName.value = profileDescription.name;
-    inputAbout.value = profileDescription.about;
-    formEditValidator.resetValidation();
-});
-
-buttonAvatar.addEventListener('click', () => {
-    popupWithFormAvatar.open();
-    formAvatarValidator.resetValidation();
-});
-
-buttonAdd.addEventListener('click', () => {
-    popupWithFormAdd.open();
-    formAddValidator.resetValidation();
-});
-
 // класс Cards
 
 function createCard(item) {
@@ -204,3 +186,21 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     .catch((err) => {
         console.log(err);
     })
+
+buttonEdit.addEventListener('click', () => {
+    const profileDescription = userInfo.getUserInfo();
+    inputName.value = profileDescription.name;
+    inputAbout.value = profileDescription.about;
+    formEditValidator.resetValidation();
+    popupWithFormEdit.open();
+});
+
+buttonAvatar.addEventListener('click', () => {
+    formAvatarValidator.resetValidation();
+    popupWithFormAvatar.open();
+});
+
+buttonAdd.addEventListener('click', () => {
+    formAddValidator.resetValidation();
+    popupWithFormAdd.open();
+});
