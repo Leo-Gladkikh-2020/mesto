@@ -24,38 +24,38 @@ export class Api {
             .then(this._checkStatus)
     }
 
-    changeUserInfo(data) {
+    changeUserInfo({ name, about }) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: {
                 authorization: this._token,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: data.name, about: data.about })
+            body: JSON.stringify({ name, about })
         })
             .then(this._checkStatus)
     }
 
-    changeUserAvatar(data) {
+    changeUserAvatar({ avatar }) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: {
                 authorization: this._token,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ avatar: data.avatar })
+            body: JSON.stringify({ avatar })
         })
             .then(this._checkStatus)
     }
 
-    addCard(data) {
+    addCard({ name, link }) {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: {
                 authorization: this._token,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: data.name, link: data.link })
+            body: JSON.stringify({ name, link })
         })
             .then(this._checkStatus)
     }

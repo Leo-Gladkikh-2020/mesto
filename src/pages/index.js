@@ -131,7 +131,7 @@ formEditValidator.enableValidation();
 const popupWithFormEdit = new PopupWithForm(popupEdit, {
     submitForm: (data) => {
         popupWithFormEdit.renderLoading(true);
-        api.changeUserInfo(data)
+        api.changeUserInfo({ name: data.name, about: data.about })
             .then((res) => {
                 userInfo.setUserInfo(res);
                 console.log(res);
@@ -149,7 +149,7 @@ const popupWithFormEdit = new PopupWithForm(popupEdit, {
 const popupWithFormAvatar = new PopupWithForm(popupAvatar, {
     submitForm: (data) => {
         popupWithFormAvatar.renderLoading(true);
-        api.changeUserAvatar(data)
+        api.changeUserAvatar({ avatar: data.avatar })
             .then((res) => {
                 userInfo.setAvatar(res);
                 console.log(res);
@@ -167,7 +167,7 @@ const popupWithFormAvatar = new PopupWithForm(popupAvatar, {
 const popupWithFormAdd = new PopupWithForm(popupAdd, {
     submitForm: (data) => {
         popupWithFormAdd.renderLoading(true);
-        api.addCard(data)
+        api.addCard({ name: data.name, link: data.link })
             .then((res) => {
                 const cardItem = createCard(res);
                 section.addItem(cardItem);
