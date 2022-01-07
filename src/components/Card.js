@@ -55,7 +55,7 @@ export class Card {
         this._likesNumber = this._element.querySelector('.element__like-number');
         this._likesNumber.textContent = this._likes.length;
         if (this._userId !== this._ownerId) {
-            this._element.remove();
+            this._trashBtn.remove();
         }
         this._likes.forEach(like => {
             if (like._id === this._userId) {
