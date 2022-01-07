@@ -1,4 +1,4 @@
-export class Api {
+/* export class Api {
     constructor({ baseUrl, token }) {
         this._baseUrl = baseUrl;
         this._token = token;
@@ -100,4 +100,4 @@ export class Api {
             return Promise.reject(`Ошибка: ${res.status}`);
         }
     }
-}
+} */

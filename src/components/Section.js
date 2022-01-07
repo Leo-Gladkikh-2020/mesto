@@ -1,4 +1,4 @@
-export class Section {
+/* export class Section {
     constructor({ renderer }, containerSelector) {
         this._renderer = renderer;
         this._containerSelector = containerSelector;
@@ -11,4 +11,4 @@ export class Section {
     addItem(item) {
         this._containerSelector.prepend(item);
     }
-}
+} */

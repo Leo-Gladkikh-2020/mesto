@@ -1,4 +1,4 @@
-export class Popup {
+/* export class Popup {
     constructor(popup) {
         this._popup = popup;
         this._handleEscClose = this._handleEscClose.bind(this);
@@ -33,4 +33,4 @@ export class Popup {
         this._popup.addEventListener('mouseup', (event) => this._handlePopupClick(event));
         this._popup.querySelector('.popup__close-btn').addEventListener('click', (event) => this.close(event));
     }
-}
+} */

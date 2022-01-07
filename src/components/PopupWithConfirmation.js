@@ -1,4 +1,4 @@
-import { Popup } from './Popup.js';
+/* import { Popup } from './Popup.js';
 
 export class PopupWithConfirmation extends Popup {
     constructor(popup) {
@@ -17,4 +17,4 @@ export class PopupWithConfirmation extends Popup {
     setSubmitAction(action) {
         this._handleSubmitCallback = action;
     }
-}
+} */

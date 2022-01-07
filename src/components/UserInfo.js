@@ -1,4 +1,4 @@
-export class UserInfo {
+/* export class UserInfo {
     constructor({ nameUser, aboutUser }) {
         this._nameUser = nameUser;
         this._aboutUser = aboutUser;
@@ -20,4 +20,4 @@ export class UserInfo {
     setAvatar(data) {
         this._avatarUser.src = data.avatar;
     }
-}
+} */
