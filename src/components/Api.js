@@ -1,4 +1,4 @@
-/* export class Api {
+export class Api {
     constructor({ baseUrl, token }) {
         this._baseUrl = baseUrl;
         this._token = token;
@@ -61,7 +61,7 @@
     }
 
     deleteCard(data) {
-        return fetch(`${this._baseUrl}/cards/${data._id}`, {
+        return fetch(`${this._baseUrl}/cards/${data}`, {
             method: 'DELETE',
             headers: {
                 authorization: this._token,
@@ -72,7 +72,7 @@
     }
 
     addLike(data) {
-        return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
+        return fetch(`${this._baseUrl}/cards/${data}/likes`, {
             method: 'PUT',
             headers: {
                 authorization: this._token,
@@ -83,7 +83,7 @@
     }
 
     deleteLike(data) {
-        return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
+        return fetch(`${this._baseUrl}/cards/${data}/likes`, {
             method: 'DELETE',
             headers: {
                 authorization: this._token,
@@ -100,4 +100,4 @@
             return Promise.reject(`Ошибка: ${res.status}`);
         }
     }
-} */
+}

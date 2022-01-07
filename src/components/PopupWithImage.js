@@ -1,4 +1,4 @@
-/* import { Popup } from './Popup.js';
+import { Popup } from './Popup.js';
 
 export class PopupWithImage extends Popup {
     constructor(popup) {
@@ -13,4 +13,4 @@ export class PopupWithImage extends Popup {
         this._popupCaption.textContent = name;
         super.open();
     }
-} */
+}

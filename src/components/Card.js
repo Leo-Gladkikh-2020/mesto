@@ -1,4 +1,4 @@
-/* export class Card {
+export class Card {
     constructor(data, cardSelector, handleCardClick, { handleDeleteCardClick, addLike, deleteLike }, userId) {
         this._name = data.name;
         this._link = data.link;
@@ -66,4 +66,4 @@
 
         return this._element;
     }
-} */
+}
