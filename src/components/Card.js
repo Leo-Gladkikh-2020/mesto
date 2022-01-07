@@ -1,13 +1,13 @@
 export class Card {
-    constructor(data, cardSelector, handleCardClick, userId, ownerId, { addLike, deleteLike, handleDeleteCardClick }) {
+    constructor(data, cardSelector, handleCardClick, userId, { addLike, deleteLike, handleDeleteCardClick }) {
         this._name = data.name;
         this._link = data.link;
+        this._ownerId = data.owner._id;
         this._likes = data.likes;
         this._likesId = data.likes._id;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
         this._userId = userId;
-        this._ownerId = ownerId;
         this._addLike = addLike;
         this._deleteLike = deleteLike;
         this._handleDeleteCardClick = handleDeleteCardClick;
@@ -34,7 +34,7 @@ export class Card {
     }
 
     countLikes(data) {
-        this._likeNumber.textContent = data.likes.length;
+        this._likesNumber.textContent = data.likes.length;
     }
 
     _setEventListeners() {
@@ -52,8 +52,8 @@ export class Card {
         this._elementTitle.textContent = this._name;
         this._likeBtn = this._element.querySelector('.element__like-btn');
         this._trashBtn = this._element.querySelector('.element__trash-btn');
-        this._likeNumber = this._element.querySelector('.element__like-number');
-        this._likeNumber.textContent = this._likes.length;
+        this._likesNumber = this._element.querySelector('.element__like-number');
+        this._likesNumber.textContent = this._likes.length;
         if (this._userId !== this._ownerId) {
             this._trashBtn.remove();
         }

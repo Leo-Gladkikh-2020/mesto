@@ -28,6 +28,8 @@ import {
     config
 } from '../utils/constants.js';
 
+let userId;
+
 // класс Api
 
 const api = new Api({
@@ -47,15 +49,16 @@ function handleCardClick(name, link) {
 // класс PopupWithConfirmation
 
 const popupWithConfirmation = new PopupWithConfirmation(popupPlaceDelete);
+popupWithConfirmation.setEventListeners();
 
 // класс Cards
 
-function createCard(item) {
-    const card = new Card(item, '.template', handleCardClick, {
-        handleDeleteIconClick: (card) => {
+function createCard(data) {
+    const card = new Card(data, '.template', handleCardClick, {
+        handleDeleteCardClick: (card) => {
             PopupWithConfirmation.open();
             PopupWithConfirmation.setSubmitAction(() => {
-                api.deleteCard(data._id)
+                api.deleteCard(data)
                     .then((res) => {
                         card.deleteCard(res);
                         PopupWithConfirmation.close();
@@ -66,7 +69,7 @@ function createCard(item) {
             })
         },
         addLike: () => {
-            api.addLike(data._id)
+            api.addLike(data)
                 .then((data) => {
                     card.countLikes(data);
                     console.log(data);
@@ -76,7 +79,7 @@ function createCard(item) {
                 })
         },
         deleteLike: () => {
-            api.deleteLike(data._id)
+            api.deleteLike(data)
                 .then((data) => {
                     card.countLikes(data);
                     console.log(data);
@@ -85,7 +88,7 @@ function createCard(item) {
                     console.log(err);
                 })
         }
-    })
+    }, userId)
     return card.generateCard();
 }
 
@@ -107,6 +110,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userData, cards]) => {
         userInfo.setUserInfo(userData);
         userInfo.setAvatar(userData);
+        userId = userData._id;
         section.renderItems(cards);
     })
     .catch((err) => {
@@ -199,5 +203,3 @@ buttonAdd.addEventListener('click', () => {
     popupWithFormAdd.open();
 });
 popupWithFormAdd.setEventListeners();
-
-popupWithConfirmation.setEventListeners();
