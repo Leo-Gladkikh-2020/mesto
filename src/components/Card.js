@@ -54,9 +54,9 @@ export class Card {
         this._trashBtn = this._element.querySelector('.element__trash-btn');
         this._likesNumber = this._element.querySelector('.element__like-number');
         this._likesNumber.textContent = this._likes.length;
-        //if (this._userId !== this._ownerId) {
-        //this._trashBtn.remove();
-        //}
+        if (this._userId !== this._ownerId) {
+            this._element.remove();
+        }
         this._likes.forEach(like => {
             if (like._id === this._userId) {
                 this._likeBtn.classList.add('element__like-btn_active');
