@@ -1,5 +1,5 @@
 export class Card {
-    constructor(data, cardSelector, handleCardClick, userId, { addLike, deleteLike, handleDeleteCardClick }) {
+    constructor(data, cardSelector, handleCardClick, { handleDeleteCardClick, addLike, deleteLike }, userId) {
         this._name = data.name;
         this._link = data.link;
         this._ownerId = data.owner._id;
@@ -7,10 +7,10 @@ export class Card {
         this._likesId = data.likes._id;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
-        this._userId = userId;
         this._addLike = addLike;
         this._deleteLike = deleteLike;
         this._handleDeleteCardClick = handleDeleteCardClick;
+        this._userId = userId;
     }
 
     _getTemplate() {
