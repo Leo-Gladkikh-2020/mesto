@@ -1,25 +1,19 @@
 export class Api {
-    constructor({ baseUrl, token }) {
+    constructor({ baseUrl, headers }) {
         this._baseUrl = baseUrl;
-        this._token = token;
+        this._headers = headers;
     }
 
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            }
+            headers: this._headers
         })
             .then(this._checkStatus)
     }
 
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            }
+            headers: this._headers
         })
             .then(this._checkStatus)
     }
@@ -27,10 +21,7 @@ export class Api {
     changeUserInfo({ name, about }) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            },
+            headers: this._headers,
             body: JSON.stringify({ name, about })
         })
             .then(this._checkStatus)
@@ -39,10 +30,7 @@ export class Api {
     changeUserAvatar({ avatar }) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            },
+            headers: this._headers,
             body: JSON.stringify({ avatar })
         })
             .then(this._checkStatus)
@@ -51,10 +39,7 @@ export class Api {
     addCard({ name, link }) {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            },
+            headers: this._headers,
             body: JSON.stringify({ name, link })
         })
             .then(this._checkStatus)
@@ -63,10 +48,7 @@ export class Api {
     deleteCard(data) {
         return fetch(`${this._baseUrl}/cards/${data._id}`, {
             method: 'DELETE',
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            }
+            headers: this._headers
         })
             .then(this._checkStatus)
     }
@@ -74,10 +56,7 @@ export class Api {
     addLike(data) {
         return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
             method: 'PUT',
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            }
+            headers: this._headers
         })
             .then(this._checkStatus)
     }
@@ -85,10 +64,7 @@ export class Api {
     deleteLike(data) {
         return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
             method: 'DELETE',
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            }
+            headers: this._headers
         })
             .then(this._checkStatus)
     }
