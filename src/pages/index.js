@@ -43,7 +43,6 @@ const api = new Api({
 // класс PopupWithImage
 
 const popupWithImage = new PopupWithImage(popupPlace);
-popupWithImage.setEventListeners();
 
 function handleCardClick(name, link) {
     popupWithImage.open(name, link);
@@ -52,19 +51,18 @@ function handleCardClick(name, link) {
 // класс PopupWithConfirmation
 
 const popupWithConfirmation = new PopupWithConfirmation(popupPlaceDelete);
-popupWithConfirmation.setEventListeners();
 
 // класс Cards
 
 function createCard(data) {
     const card = new Card(data, '.template', handleCardClick, {
         handleDeleteCardClick: (card) => {
-            PopupWithConfirmation.open();
-            PopupWithConfirmation.setSubmitAction(() => {
+            popupWithConfirmation.open();
+            popupWithConfirmation.setSubmitAction(() => {
                 api.deleteCard(data)
                     .then((res) => {
                         card.deleteCard(res);
-                        PopupWithConfirmation.close();
+                        popupWithConfirmation.close();
                     })
                     .catch((err) => {
                         console.log(err);
@@ -134,7 +132,7 @@ formEditValidator.enableValidation();
 const popupWithFormEdit = new PopupWithForm(popupEdit, {
     submitForm: (data) => {
         popupWithFormEdit.renderLoading(true);
-        api.changeUserInfo({ name: data.name, about: data.about })
+        api.changeUserInfo(data)
             .then((res) => {
                 userInfo.setUserInfo(res);
                 console.log(res);
@@ -152,7 +150,7 @@ const popupWithFormEdit = new PopupWithForm(popupEdit, {
 const popupWithFormAvatar = new PopupWithForm(popupAvatar, {
     submitForm: (data) => {
         popupWithFormAvatar.renderLoading(true);
-        api.changeUserAvatar({ avatar: data.avatar })
+        api.changeUserAvatar(data)
             .then((res) => {
                 userInfo.setAvatar(res);
                 console.log(res);
@@ -170,7 +168,7 @@ const popupWithFormAvatar = new PopupWithForm(popupAvatar, {
 const popupWithFormAdd = new PopupWithForm(popupAdd, {
     submitForm: (data) => {
         popupWithFormAdd.renderLoading(true);
-        api.addCard({ name: data.name, link: data.link })
+        api.addCard(data)
             .then((res) => {
                 const cardItem = createCard(res);
                 section.addItem(cardItem);
@@ -193,16 +191,19 @@ buttonEdit.addEventListener('click', () => {
     formEditValidator.resetValidation();
     popupWithFormEdit.open();
 });
-popupWithFormEdit.setEventListeners();
 
 buttonAvatar.addEventListener('click', () => {
     formAvatarValidator.resetValidation();
     popupWithFormAvatar.open();
 });
-popupWithFormAvatar.setEventListeners();
 
 buttonAdd.addEventListener('click', () => {
     formAddValidator.resetValidation();
     popupWithFormAdd.open();
 });
+
+popupWithImage.setEventListeners();
+popupWithConfirmation.setEventListeners();
+popupWithFormEdit.setEventListeners();
+popupWithFormAvatar.setEventListeners();
 popupWithFormAdd.setEventListeners();
