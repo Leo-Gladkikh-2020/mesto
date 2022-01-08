@@ -61,7 +61,7 @@ export class Api {
     }
 
     deleteCard(data) {
-        return fetch(`${this._baseUrl}/cards/${data}`, {
+        return fetch(`${this._baseUrl}/cards/${data._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: this._token,
@@ -72,7 +72,7 @@ export class Api {
     }
 
     addLike(data) {
-        return fetch(`${this._baseUrl}/cards/${data}/likes`, {
+        return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
             method: 'PUT',
             headers: {
                 authorization: this._token,
@@ -83,7 +83,7 @@ export class Api {
     }
 
     deleteLike(data) {
-        return fetch(`${this._baseUrl}/cards/${data}/likes`, {
+        return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
             method: 'DELETE',
             headers: {
                 authorization: this._token,
