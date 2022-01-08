@@ -22,6 +22,7 @@ import {
     buttonAvatar,
     profileTitle,
     profileSubtitle,
+    profileAvatar,
     inputName,
     inputAbout,
     listElements,
@@ -73,6 +74,7 @@ function createCard(data) {
             api.addLike(data)
                 .then((data) => {
                     card.countLikes(data);
+                    card.setLikeButton(true);
                     console.log(data);
                 })
                 .catch((err) => {
@@ -83,6 +85,7 @@ function createCard(data) {
             api.deleteLike(data)
                 .then((data) => {
                     card.countLikes(data);
+                    card.setLikeButton(false);
                     console.log(data);
                 })
                 .catch((err) => {
@@ -105,7 +108,7 @@ const section = new Section({
 
 // класс UserInfo
 
-const userInfo = new UserInfo({ nameUser: profileTitle, aboutUser: profileSubtitle });
+const userInfo = new UserInfo({ nameUser: profileTitle, aboutUser: profileSubtitle, avatarUser: profileAvatar });
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userData, cards]) => {

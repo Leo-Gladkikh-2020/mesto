@@ -14,6 +14,7 @@ export const buttonAdd = document.querySelector('.profile__add-btn');
 
 export const profileTitle = document.querySelector('.profile__name');
 export const profileSubtitle = document.querySelector('.profile__subtitle');
+export const profileAvatar = document.querySelector('.profile__avatar');
 
 export const inputName = document.querySelector('.popup__input_text_name');
 export const inputAbout = document.querySelector('.popup__input_text_about');

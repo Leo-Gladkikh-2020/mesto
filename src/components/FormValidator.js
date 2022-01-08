@@ -6,6 +6,7 @@ export class FormValidator {
         this._submitButtonSelector = config.submitButtonSelector;
         this._submitButtonErrorClass = config.submitButtonErrorClass;
         this._inputs = Array.from(this._form.querySelectorAll(this._inputSelector));
+        this._button = this._form.querySelector(this._submitButtonSelector);
     }
 
     enableValidation() {
@@ -18,9 +19,8 @@ export class FormValidator {
     }
 
     _setSubmitButtonState() {
-        const button = this._form.querySelector(this._submitButtonSelector);
-        button.disabled = !this._form.checkValidity();
-        button.classList.toggle(this._submitButtonErrorClass, !this._form.checkValidity());
+        this._button.disabled = !this._form.checkValidity();
+        this._button.classList.toggle(this._submitButtonErrorClass, !this._form.checkValidity());
     }
 
     _handleSubmit(event) {

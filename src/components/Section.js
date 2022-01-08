@@ -1,7 +1,7 @@
 export class Section {
     constructor({ renderer }, containerSelector) {
         this._renderer = renderer;
-        this._containerSelector = containerSelector;
+        this._container = containerSelector;
     }
 
     renderItems(item) {
@@ -9,6 +9,6 @@ export class Section {
     }
 
     addItem(item) {
-        this._containerSelector.prepend(item);
+        this._container.prepend(item);
     }
 }

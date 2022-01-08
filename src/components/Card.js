@@ -20,11 +20,17 @@ export class Card {
 
     _likeCard() {
         if (!this._likeBtn.classList.contains('element__like-btn_active')) {
-            this._likeBtn.classList.add('element__like-btn_active');
             this._addLike(this._likesId);
         } else {
-            this._likeBtn.classList.remove('element__like-btn_active');
             this._deleteLike(this._likesId);
+        }
+    }
+
+    setLikeButton(isLiked) {
+        if (isLiked) {
+            this._likeBtn.classList.add('element__like-btn_active');
+        } else {
+            this._likeBtn.classList.remove('element__like-btn_active');
         }
     }
 
